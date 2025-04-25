@@ -1,0 +1,42 @@
+/**
+ * JavaFX FXML for Report Generation.
+ 
+ */
+/*
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            prefHeight="600.0" prefWidth="800.0">
+    <top>
+        <VBox spacing="10">
+            <padding><Insets top="15" right="15" bottom="15" left="15"/></padding>
+            <Label fx:id="titleLabel" text="Pay Statement Report" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+            <HBox spacing="10" alignment="CENTER_LEFT">
+                <Label text="Report Type:" />
+                <ComboBox fx:id="reportTypeComboBox" prefWidth="200" />
+                <Label text="Month:" />
+                <DatePicker fx:id="monthPicker" />
+                <Button fx:id="generateButton" text="Generate Report" onAction="#handleGenerateReport" />
+                <Button fx:id="exportButton" text="Export to PDF" onAction="#handleExportToPdf" />
+            </HBox>
+            <Label fx:id="statusLabel" text="" style="-fx-text-fill: #0066cc;"/>
+        </VBox>
+    </top>
+    <center>
+        <TableView fx:id="tableView" VBox.vgrow="ALWAYS">
+            <!-- Columns will be added programmatically -->
+        </TableView>
+    </center>
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" spacing="10">
+            <padding><Insets top="10" right="15" bottom="15" left="15"/></padding>
+            <Label text="©2025 Company Z" />
+        </HBox>
+    </bottom>
+</BorderPane>
+*/
