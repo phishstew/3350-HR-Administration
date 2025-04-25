@@ -133,4 +133,26 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     // Implement other DAO methods (update, create, delete) here...
+    public int updateSalariesByRange(double percentIncrease, double minSalary, double maxSalary) {
+        String sql = "UPDATE employees SET salary = salary * ? WHERE salary >= ? AND salary < ?";
+        int rowsUpdated = 0;
+    
+        try (Connection conn = dataSource.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql)) {
+    
+            double multiplier = 1 + (percentIncrease / 100.0);
+    
+            stmt.setDouble(1, multiplier);
+            stmt.setDouble(2, minSalary);
+            stmt.setDouble(3, maxSalary);
+    
+            rowsUpdated = stmt.executeUpdate();
+            System.out.println("Updated " + rowsUpdated + " employee salaries.");
+    
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    
+        return rowsUpdated;
+    }
 }
