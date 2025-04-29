@@ -133,6 +133,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     // Implement other DAO methods (update, create, delete) here...
+    /*
     public int updateSalariesByRange(double percentIncrease, double minSalary, double maxSalary) {
         String sql = "UPDATE employees SET salary = salary * ? WHERE salary >= ? AND salary < ?";
         int rowsUpdated = 0;
@@ -155,4 +156,75 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     
         return rowsUpdated;
     }
+    public boolean addEmployee(Employee newEmp) {
+        try (Connection conn = DatabaseUtil.getConnection()) {
+            String sql = "INSERT INTO employees (first_name, last_name, ssn, dob, hire_date, salary) VALUES (?, ?, ?, ?, ?, ?)";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, newEmp.getFirstName());
+            stmt.setString(2, newEmp.getLastName());
+            stmt.setString(3, newEmp.getSsn());
+            stmt.setDate(4, java.sql.Date.valueOf(newEmp.getDob()));
+            stmt.setDate(5, java.sql.Date.valueOf(newEmp.getHireDate()));
+            stmt.setDouble(6, newEmp.getSalary());
+    
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    public Employee getEmployeeById(int empId) {
+        try (Connection conn = DatabaseUtil.getConnection()) {
+            String sql = "SELECT * FROM employees WHERE empid = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, empId);
+            ResultSet rs = stmt.executeQuery();
+    
+            if (rs.next()) {
+                return new Employee(
+                    rs.getInt("empid"),
+                    rs.getString("first_name"),
+                    rs.getString("last_name"),
+                    rs.getString("ssn"),
+                    rs.getDate("dob").toLocalDate(),
+                    rs.getDate("hire_date").toLocalDate(),
+                    rs.getDouble("salary")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public boolean updateEmployee(Employee emp) {
+        try (Connection conn = DatabaseUtil.getConnection()) {
+            String sql = "UPDATE employees SET first_name = ?, last_name = ?, ssn = ?, dob = ?, hire_date = ?, salary = ? WHERE empid = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, emp.getFirstName());
+            stmt.setString(2, emp.getLastName());
+            stmt.setString(3, emp.getSsn());
+            stmt.setDate(4, java.sql.Date.valueOf(emp.getDob()));
+            stmt.setDate(5, java.sql.Date.valueOf(emp.getHireDate()));
+            stmt.setDouble(6, emp.getSalary());
+            stmt.setInt(7, emp.getEmpId());
+    
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    public boolean deleteEmployee(int empId) {
+        try (Connection conn = DatabaseUtil.getConnection()) {
+            String sql = "DELETE FROM employees WHERE empid = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, empId);
+    
+            return stmt.executeUpdate() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+*/
 }
