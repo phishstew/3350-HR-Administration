@@ -3,6 +3,7 @@
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "javafx-sdk-24.0.1/**/*.jar"
+        "javafx-sdk-24.0.1/**/*.jar",
+        "/Users/vishnukunnummal/Documents/GitHub/3350-HR-Administration/commons-dbcp2-2.13.0/**/*.jar"
     ]
 }
